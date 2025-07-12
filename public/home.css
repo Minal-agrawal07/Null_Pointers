@@ -1,0 +1,270 @@
+/* === Reset === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === Body === */
+body {
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at top right, #0f2d3e, #091e2a 60%, #06131c);
+  color: white;
+  min-height: 100vh;
+  padding: 100px 20px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  position: relative;
+  overflow-y: auto; /* ✅ Enable vertical scroll */
+}
+
+/* === Navbar === */
+/* === Navbar === */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: radial-gradient(circle at top right, #0f2d3e, #091e2a 60%, #06131c);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 28px;
+  z-index: 999;
+ 
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo .ss-ic {
+  height: 48px;
+  width: auto;
+ 
+}
+
+/* NAVIGATION LINKS */
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links li:hover {
+  color: #12edc8;
+}
+
+/* Icon Images (aligned better) */
+.nav-icon-img {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) invert(1);
+}
+
+
+/* === Container === */
+.container {
+  max-width: 1000px;
+  width: 100%;
+  z-index: 1;
+}
+
+/* === Title === */
+.title {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #12edc8;
+  text-shadow: 0 0 10px rgba(18, 237, 200, 0.5), 0 0 20px rgba(18, 237, 200, 0.3);
+  letter-spacing: 1.5px;
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+
+/* === Controls === */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.controls select,
+.controls input {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  background-color: #204a5c;
+  color: white;
+  font-size: 1rem;
+  min-width: 200px;
+}
+
+.controls input::placeholder {
+  color: #ccc;
+}
+
+.controls select:focus,
+.controls input:focus {
+  outline: 2px solid #12edc8;
+}
+
+/* === Cards Container === */
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* === Individual Request Card === */
+.request-card {
+  background-color: #0b2531;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 6px 18px rgba(0, 255, 200, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.request-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 22px rgba(0, 255, 200, 0.15);
+}
+
+
+/* === Profile Photo Placeholder === */
+.profile-photo {
+  background-color: #1a3c4d;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 70px;
+  font-size: 1.2rem;
+  color: #b86bff;
+  font-weight: 600;
+  margin: 0 auto;
+}
+
+
+.card-content h3 {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #12edc8;
+  margin-bottom: 10px;
+}
+
+
+.skills {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.label {
+  font-weight: 600;
+  color: #90ee90;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-tag {
+  background-color: #204a5c;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: white;
+}
+
+/* === Card Footer === */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rating {
+  font-size: 0.9rem;
+  color: #f0db4f;
+}
+
+.request-button {
+  padding: 8px 16px;
+  background: linear-gradient(to right, #67c87f, #69d322);
+  color: #0e2b3d;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.request-button:hover {
+  background: linear-gradient(to right, #3b7049, #69d322);
+}
+
+/* === Pagination === */
+.pagination {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.pagination button {
+  padding: 8px 14px;
+  margin: 0 5px;
+  border: none;
+  background-color: #204a5c;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.pagination button.active {
+  background-color: #12edc8;
+  color: #0e2b3d;
+  font-weight: bold;
+}
+
+.pagination button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .controls {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-footer {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+}

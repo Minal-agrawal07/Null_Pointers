@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skill Swap Platform</title>
+  <link rel="stylesheet" href="home.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="images/ss-logo.png" alt="SkillSwap Logo" class="ss-ic" />
+    </div>
+   <ul class="nav-links">
+  <li>
+    <a href="profile.html">Profile</a>
+  </li>
+  <li>
+    <a href="Req.html">Requests</a>
+  </li>
+  <li>
+    <a font-color:yellow  href="index.html">Updates</a>
+  </li>
+  <li>
+    <i class="fas fa-envelope-open-text"></i><a href="contact.html"> Contact Us</a>
+    <img src="images/contact-us.png" class="nav-icon-img" alt="Contact Image Icon" />
+  </li>
+</ul>
+
+  </nav>
+
+  <div class="container">
+    <h1 class="title">Skill Swap Platform</h1>
+
+    <!-- Filters: Availability + Search -->
+    <div class="controls" aria-label="Filter controls">
+      <select id="availabilityFilter" aria-label="Filter by availability">
+        <option value="all">Availability</option>
+        <option value="available">Available</option>
+        <option value="unavailable">Unavailable</option>
+      </select>
+      <input 
+        type="text" 
+        id="searchInput" 
+        placeholder="Search by skill..." 
+        aria-label="Search by skill"
+      />
+    </div>
+
+    <!-- Cards Section -->
+    <div id="requestCardsContainer" class="cards-container" aria-live="polite">
+      <!-- JavaScript will inject cards here -->
+    </div>
+
+    <!-- Pagination -->
+    <div id="paginationContainer" class="pagination" aria-label="Pagination controls">
+      <!-- JavaScript will inject pagination buttons here -->
+    </div>
+  </div>
+
+  <script src="home.js"></script>
+</body>
+</html>
