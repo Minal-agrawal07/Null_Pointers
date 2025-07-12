@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skill Swap Request</title>
+  <link rel="stylesheet" href="screen5.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+ <nav class="navbar">
+  <div class="logo">
+    <img src="images/ss-logo.png" alt="SkillSwap Logo" class="ss-ic" />
+  </div>
+  <ul class="nav-links">
+    <li>
+      <i class="fas fa-home"></i> Home
+      <img src="images/home.png" class="nav-icon-img" alt="Home Image Icon" />
+    </li>
+    <li>
+      <i class="fas fa-envelope-open-text"></i> Contact Us
+      <img src="images/contact-us.png" class="nav-icon-img" alt="Contact Image Icon" />
+    </li>
+  </ul>
+</nav>
+
+
+  <!-- ✅ Snake Rods Animation -->
+  <div class="snake-bg">
+    <span class="snake snake1"></span>
+    <span class="snake snake2"></span>
+    <span class="snake snake3"></span>
+  </div>
+
+  <!-- ✅ Form -->
+  <div class="form-container">
+    <form>
+      <label for="offered-skill">Choose one of your offered skills</label>
+      <select id="offered-skill" name="offered-skill" required>
+        <option value="">Select a skill</option>
+        <option value="design">Design</option>
+        <option value="coding">Coding</option>
+      </select>
+
+      <label for="wanted-skill">Choose one of their wanted skills</label>
+      <select id="wanted-skill" name="wanted-skill" required>
+        <option value="">Select a skill</option>
+        <option value="marketing">Marketing</option>
+        <option value="writing">Writing</option>
+      </select>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Type your message..." required></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+</body>
+</html>
