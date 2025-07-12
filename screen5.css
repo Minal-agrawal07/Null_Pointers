@@ -1,0 +1,233 @@
+/* === Reset === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === Body === */
+body {
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at top right, #0f2d3e, #091e2a 60%, #06131c);
+  color: white;
+  min-height: 100vh;
+  padding-top: 100px; /* navbar space */
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* === Navbar (exact original style, no glow) === */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: radial-gradient(circle at top right, #0f2d3e, #091e2a 60%, #06131c);
+  flex-wrap: wrap;
+ 
+}
+
+.logo .ss-ic {
+  height: 45px;
+  width: auto;
+  /* No glow, no shadow */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.nav-links li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.nav-links li:hover {
+  color: #12edc8;
+}
+
+.nav-icon-img {
+  width: 20px;
+  height: 20px;
+  margin-left: 6px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  vertical-align: middle;
+}
+
+
+/* === Snake-like Moving Rods === */
+.snake-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.snake {
+  position: absolute;
+  width: 200px;
+  height: 8px;
+  background: linear-gradient(to right, #12edc8, #67c87f);
+  border-radius: 10px;
+  opacity: 0.2;
+  filter: blur(1px);
+  animation: snakeMove 10s ease-in-out infinite alternate;
+}
+
+.snake1 {
+  top: 10%;
+  left: -200px;
+  animation-delay: 0s;
+}
+
+.snake2 {
+  top: 40%;
+  left: -250px;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+
+.snake3 {
+  top: 70%;
+  left: -300px;
+  animation-delay: 4s;
+  animation-duration: 14s;
+}
+
+@keyframes snakeMove {
+  0%   { transform: translateX(0) translateY(0) rotate(0deg) scaleX(1); }
+  25%  { transform: translateX(30vw) translateY(-30px) rotate(15deg) scaleX(1.2); }
+  50%  { transform: translateX(60vw) translateY(10px) rotate(-10deg) scaleX(1); }
+  75%  { transform: translateX(85vw) translateY(-20px) rotate(5deg) scaleX(0.9); }
+  100% { transform: translateX(110vw) translateY(0) rotate(0deg) scaleX(1); }
+}
+
+/* === Form Container === */
+.form-container {
+  position: relative;
+  z-index: 1;
+  background-color: #071a22;
+  border-radius: 12px;
+  padding: 35px 30px;
+  width: 90%;
+  max-width: 450px;
+  margin: 0 auto;
+  box-shadow: 0 0 20px rgba(137, 206, 177, 0.1);
+}
+
+/* === Form Elements === */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #90ee90;
+}
+
+select,
+textarea {
+  background-color: #204a5c;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  padding: 12px;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  resize: none;
+}
+
+select:focus,
+textarea:focus {
+  outline: none;
+  border: 2px solid #12edc8;
+}
+
+/* === Submit Button === */
+button[type="submit"] {
+  margin-top: 10px;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(to right, #67c87f, #69d322);
+  color: #0e2b3d;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background: linear-gradient(to right, #3b7049, #69d322);
+}
+
+/* === Responsive Media Queries === */
+@media (max-width: 768px) {
+  .form-container {
+    padding: 30px 20px;
+  }
+
+  .nav-links {
+    gap: 16px;
+  }
+
+  select,
+  textarea {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+
+  button[type="submit"] {
+    font-size: 0.95rem;
+  }
+
+  label {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-container {
+    padding: 25px 15px;
+  }
+
+  .nav-links {
+    font-size: 0.9rem;
+    gap: 12px;
+  }
+
+  select,
+  textarea {
+    font-size: 0.9rem;
+  }
+
+  button[type="submit"] {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  label {
+    font-size: 0.9rem;
+  }
+}
