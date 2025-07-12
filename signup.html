@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up - SkillSwap</title>
+  <link rel="stylesheet" href="login.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="images/ss-logo.png" alt="SkillSwap Logo" class="ss-ic" />
+    </div>
+    <ul class="nav-links">
+      <li><i class="fas fa-home"></i> Home <img src="images/home.png" class="nav-icon-img" alt="Home" /></li>
+      <li><i class="fas fa-envelope-open-text"></i> Contact Us <img src="images/contact-us.png" class="nav-icon-img" alt="Contact" /></li>
+    </ul>
+  </nav>
+
+  <main class="login-container">
+    <div class="login-card">
+      <h2>Create Your Account</h2>
+      <form id="signup-form">
+        <div class="input-group">
+          <img src="images/enteryourname.png" class="input-icon" alt="Name Icon" />
+          <input type="text" id="signup-name" placeholder="Full Name" required />
+        </div>
+        <div class="input-group">
+          <img src="images/email.png" class="input-icon" alt="Email Icon" />
+          <input type="email" id="signup-email" placeholder="Email" required />
+        </div>
+        <div class="input-group">
+          <img src="images/lock.png" class="input-icon" alt="Password Icon" />
+          <input type="password" id="signup-password" placeholder="Password" required />
+        </div>
+        <div class="input-group">
+          <img src="images/lock.png" class="input-icon" alt="Confirm Password Icon" />
+          <input type="password" id="signup-confirm-password" placeholder="Confirm Password" required />
+        </div>
+        <button type="submit" id="signup-button">
+          <span id="signup-text">Sign Up</span>
+          <span id="signup-spinner" style="display: none;"><i class="fas fa-spinner fa-spin"></i> Creating...</span>
+        </button>
+        <div id="signup-message" style="display: none; text-align: center; margin-top: 10px;"></div>
+        <div class="links">
+          <a href="login.html">Already have an account? Login</a>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('signup-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('signup-name').value;
+      const email = document.getElementById('signup-email').value;
+      const password = document.getElementById('signup-password').value;
+      const confirmPassword = document.getElementById('signup-confirm-password').value;
+      const msgBox = document.getElementById('signup-message');
+
+      if (password.length < 6) {
+        msgBox.textContent = "Password must be at least 6 characters";
+        msgBox.style.color = 'red';
+        msgBox.style.display = 'block';
+        return;
+      }
+      if (password !== confirmPassword) {
+        msgBox.textContent = "Passwords don't match!";
+        msgBox.style.color = 'red';
+        msgBox.style.display = 'block';
+        return;
+      }
+
+      document.getElementById('signup-text').style.display = 'none';
+      document.getElementById('signup-spinner').style.display = 'inline-block';
+      document.getElementById('signup-button').disabled = true;
+
+      const response = await fetch('http://localhost:5000/api/auth/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, password })
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        msgBox.innerHTML = `✅ Account created for ${email}. Redirecting...`;
+        msgBox.style.color = 'green';
+        msgBox.style.display = 'block';
+        setTimeout(() => window.location.href = 'login.html', 3000);
+      } else {
+        msgBox.textContent = data.message || 'Signup failed';
+        msgBox.style.color = 'red';
+        msgBox.style.display = 'block';
+        document.getElementById('signup-text').style.display = 'inline-block';
+        document.getElementById('signup-spinner').style.display = 'none';
+        document.getElementById('signup-button').disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

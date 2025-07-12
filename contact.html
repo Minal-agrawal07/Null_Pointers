@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - SkillSwap</title>
+  <link rel="stylesheet" href="login.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="images/ss-logo.png" alt="SkillSwap Logo" class="ss-ic" />
+    </div>
+    <!-- <ul class="nav-links">
+      <li onclick="window.location.href='login.html'">
+        <i class="fas fa-home"></i> Home
+        <img src="images/home.png" class="nav-icon-img" alt="Home Icon" />
+      </li>
+      <li onclick="window.location.href='contact.html'">
+        <i class="fas fa-envelope-open-text"></i> Contact Us
+        <img src="images/contact-us.png" class="nav-icon-img" alt="Contact Icon" />
+      </li>
+    </ul> -->
+
+    <ul class="nav-links">
+      <li onclick="window.location.href='mainn.html'">
+        <i class="fas fa-home"></i> Home
+        <img src="images/home.png" class="nav-icon-img" alt="Home Image Icon" />
+      </li>
+      <!-- <li onclick="window.location.href='contact.html'">
+        <i class="fas fa-envelope-open-text"></i> Contact Us
+        <img src="images/contact-us.png" class="nav-icon-img" alt="Contact Image Icon" />
+      </li> -->
+    </ul>
+
+
+
+
+  </nav>
+
+  <main class="login-container">
+    <div class="login-card">
+      <h2>Contact Us</h2>
+      <form id="contactForm">
+        <div class="input-group">
+          <img src="images/enteryourname.png" class="input-icon" alt="Name Icon" />
+          <input type="text" id="name" placeholder="Your Name" required />
+        </div>
+
+        <div class="input-group">
+          <img src="images/email.png" class="input-icon" alt="Email Icon" />
+          <input type="email" id="email" placeholder="Your Email" required />
+        </div>
+
+        <div class="input-group">
+          <img src="images/problem.png" class="input-icon" alt="Message Icon" />
+<textarea id="message" placeholder="Your Message" rows="3" required
+ style="width: 100%; padding: 10px 10px 10px 40px; background-color: #204a5c; border: none; border-radius: 5px; color: white; font-size: 1rem;"></textarea>
+
+
+        </div>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- <script>
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // Normally here you'd send data to backend
+
+      // Just show thank you popup
+      alert("Thank you for contacting us! We'll get back to you soon.");
+
+      // Clear the form after submission
+      form.reset();
+    });
+  </script> -->
+
+ <script>
+  const form = document.getElementById('contactForm');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const res = await fetch('http://localhost:5000/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        message: document.getElementById('message').value
+      })
+    });
+
+    const data = await res.json();
+    alert(data.msg || "Thanks for contacting us!");
+    form.reset();
+  });
+</script>
+ 
+</body>
+</html>

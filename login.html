@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - SkillSwap</title>
+  <link rel="stylesheet" href="login.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="images/ss-logo.png" alt="SkillSwap Logo" class="ss-ic" />
+    </div>
+    <ul class="nav-links">
+      
+      <li><i class="fas fa-envelope-open-text"></i><a href="contact.html"> Contact Us </a><img src="images/contact-us.png" class="nav-icon-img" alt="Contact" /></li>
+      
+</li>
+    </ul>
+  </nav>
+
+  <main class="login-container">
+    <div class="login-card">
+      <h2>Login to SkillSwap</h2>
+      <form id="login-form">
+        <div class="input-group">
+          <img src="images/enteryourname.png" class="input-icon" alt="Name Icon" />
+          <input type="text" id="name" placeholder="Enter your name" required />
+        </div>
+        <div class="input-group">
+          <img src="images/email.png" class="input-icon" alt="Email Icon" />
+          <input type="email" id="email" placeholder="Enter your email" required />
+        </div>
+        <div class="input-group">
+          <img src="images/lock.png" class="input-icon" alt="Password Icon" />
+          <input type="password" id="password" placeholder="Enter your password" required />
+        </div>
+        <button type="submit">Login</button>
+        <div class="links">
+        
+          <a href="signup.html">Don't have an account? Sign up</a>
+        </div>
+      </form>
+    </div>
+  </main>
+
+<script>
+  document.getElementById('login-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    try {
+      const response = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.token) {
+        // ✅ Save authentication data to localStorage
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('userEmail', email);
+        if (data.userId) localStorage.setItem('userId', data.userId);
+
+        // ✅ Redirect to profile page
+        window.location.href = 'mainn.html';
+      } else {
+        alert(data.message || 'Login failed. Please try again.');
+      }
+    } catch (err) {
+      console.error('Login error:', err);
+      alert('Something went wrong. Please try again later.');
+    }
+  });
+</script>
+
+
+</body>
+</html>
